@@ -29,15 +29,20 @@ public class main {
             String[] palabra = leer.split(" "); // Hago un split de leer y lo guardo en una array list palabra
             switch (palabra[0]) {  // Al switch le paso como parametro la primera palabra de la array
                 case "addCasa":
-                    
                     if (palabra.length == 4){
-                        if (Integer.parseInt(palabra[3]) < 10) {System.out.println("No tienes suficiente espacio para poner placas");}
-                        else if (palabra[1].length() != 9) {System.out.println("Introduce un NIF valido");}
-                        else{
-                            Casa miCasa = new Casa(palabra[1], palabra[2], Integer.parseInt(palabra[3]));
-                            casas.add(miCasa);
-                            System.out.println("OK: Casa registrada.");
+                        if (casas.isEmpty() == false){
+                            for(int i = 0; i < casas.size(); i++){
+                                if (casas.get(i).getNif().equals(palabra[1])){
+                                    System.out.println("holaaaaaaaaaaaaaaaaa");}
+                            }
                         }
+                        else if (Integer.parseInt(palabra[3]) < 10) {System.out.println("No tienes suficiente espacio para poner placas");}
+                        else if (palabra[1].length() != 9) {System.out.println("Introduce un NIF valido");}
+                                else{
+                                    Casa miCasa = new Casa(palabra[1], palabra[2], Integer.parseInt(palabra[3]));
+                                    casas.add(miCasa);
+                                    System.out.println("OK: Casa registrada.");
+                                 }
                     }break;
                     case "list":
                     System.out.println("Cases enregistrades: " + casas.size());
@@ -46,7 +51,7 @@ public class main {
                         System.out.println("Superfície de teulada: " + casas.get(i).getSuperficie());}
                     break;
                     
-                case "quit":
+                    case "quit":
                     quit = true;
                     break;
             
