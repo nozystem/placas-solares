@@ -9,7 +9,7 @@ package com.mycompany.main;
  * @author nozystem
  */
 public class PlacaSolar {
-
+    
     private int superficie;
     private float precio;
     private int potencia;
@@ -29,6 +29,6 @@ public class PlacaSolar {
     }
 
     public int getPotencia() {
-        return this.superficie;
+        return this.potencia;
     }
 }
