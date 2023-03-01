@@ -16,13 +16,15 @@ public class Casa {
     private String nombre;
     private int superficie;
     private boolean interruptor;
+    private ArrayList<PlacaSolar> placas;
+    private ArrayList<Aparato> aparatos; 
 
     public Casa(String nif, String nombre, int superficie) {
         this.nif = nif;
         this.nombre = nombre;
         this.superficie = superficie;
-        ArrayList<PlacaSolar> placas = new ArrayList<>();
-        ArrayList<Aparato> aparatos = new ArrayList<>();
+        placas = new ArrayList<>();
+        aparatos = new ArrayList<>();
     }
 
     public String getNif() {
@@ -44,5 +46,31 @@ public class Casa {
     public void SetInterruptor(boolean newInterruptor) {
         this.interruptor = newInterruptor;
     }
+    
+    public void anadirPlaca(PlacaSolar miPlaca) {
+        placas.add(miPlaca);
+    }
+     public void anadirAparato(Aparato miAparato) {
+        aparatos.add(miAparato);
+    }
+    public int comprobarSuperficie(){
+        int superficieTotal = 0;
+        for(int i = 0; i < placas.size(); i++){
+            superficieTotal += placas.get(i).getSuperficie();
+        }
+        int superficieRestante =  this.superficie - superficieTotal;
+        return superficieRestante;
+    }
+    public int listPlaca(){
+        return placas.size();
+    }
+    
+    public Aparato dameAparato(String descripcion) {
+    for (int i = 0; i < aparatos.size(); i++) {
+    if (aparatos.get(i).getDescripcion().equalsIgnoreCase(descripcion)) {
+        return aparatos.get(i); 
+                }
+         }return null;
+    }
+        
 }
-

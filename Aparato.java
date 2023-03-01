@@ -27,7 +27,10 @@ public class Aparato {
         return this.consumo;
     }
 
-    public boolean geInterruptor() {
+    public boolean getInterruptor() {
         return this.interruptor;
+    }
+    public void setAparell(boolean estado) {
+        this.interruptor = estado;
     }
 }
