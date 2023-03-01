@@ -58,7 +58,6 @@ public class main {
                                     Casa miCasa = new Casa(palabra[1], palabra[2], Integer.parseInt(palabra[3]));
                                     casas.add(miCasa);
                                     System.out.println("OK: Casa registrada.");}
-                                
                                 }else{  System.out.println("ERROR: Superficie incorrecta. Ha de ser més gran de 10");}
                             }else{  System.out.println("ERROR: Ja hi ha una casa registrada amb aquest nif");}
                         } else {System.out.println("ERROR: Número de paràmetres incorrecte");}
@@ -74,7 +73,7 @@ public class main {
                                         if (casa.comprobarSuperficie() >= Integer.parseInt(palabra[2])){
                                             PlacaSolar miPlaca = new PlacaSolar(Integer.parseInt(palabra[2]), Float.parseFloat(palabra[3]), Integer.parseInt(palabra[4]));
                                             casa.anadirPlaca(miPlaca);
-                                            System.out.println("OK: Placa afegida a la casa .");   
+                                            System.out.println("OK: Placa afegida a la casa.");   
                                         } else {System.out.println("ERROR: No hi ha espai disponible per a instal·lar aquesta placa.");}
                                     } else {System.out.println("ERROR: Potencia incorrecta. Ha de ser més gran de 0.");}
                                 } else {System.out.println("ERROR: Precio incorrecto. Ha de ser més gran de 0.");}
@@ -82,12 +81,42 @@ public class main {
                         } else {System.out.println("ERROR: No hi ha cap casa registrada amb aquest nif.");}
                      } else {System.out.println("ERROR: Número de paràmetres incorrecte.");}
                 break;
+                case "ADDAPARELL":
+                    casa= dameCasa(palabra[1]);
+                     if (palabra.length == 4) {
+                        if(dameCasa(palabra[1]) !=  null){
+                            if(Integer.parseInt(palabra[3]) > 0){
+                                Aparato miAparato = new Aparato(palabra[2], Integer.parseInt(palabra[3]));
+                                casa.anadirAparato(miAparato);
+                                System.out.println("OK: Aparell afegit a la casa.");   
+                            } else {System.out.println("ERROR: Potència incorrecte. Ha de ser més gran de 0.");}
+                        } else {System.out.println("ERROR: No hi ha cap casa registrada amb aquest nif.");}
+                    } else {System.out.println("ERROR: Número de paràmetres incorrecte.");}
+                break;
+                case "ONAPARELL":
+                    casa = dameCasa(palabra[1]);
+                    if (casa.getIntrruptor() == true){
+                    if (dameCasa(palabra[1]) != null){
+                    if (casa.dameAparato(palabra[2]) != null){
+                    if (casa.dameAparato(palabra[2]).getInterruptor() == false){
+                        casa.dameAparato(palabra[2]).setAparell(true);
+                    }
+                    }
+                    }
+                    }
                 case "LIST":
+                    System.out.println("--- Endolls Solars, S.L. ---");
                     System.out.println("Cases enregistrades: " + casas.size());
                     for (int i = 0; i < casas.size(); i++) {
                         System.out.println("Client: " + casas.get(i).getNif() + " - " + casas.get(i).getNombre());
                         System.out.println("Superfície de teulada: " + casas.get(i).getSuperficie());
+                        System.out.println("Superfície disponible: " + casas.get(i).comprobarSuperficie());
+                        if ( casas.get(i).getIntrruptor() == false){
+                        System.out.println("Interruptor general: apagat");
+                        }else{ System.out.println("Interruptor general: encés");}
+                        System.out.println("Plaques solars instal·lades: " + casas.get(i).listPlaca());
                     }
+                    
                 break;
 
                 case "QUIT":

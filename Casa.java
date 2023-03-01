@@ -50,6 +50,9 @@ public class Casa {
     public void anadirPlaca(PlacaSolar miPlaca) {
         placas.add(miPlaca);
     }
+     public void anadirAparato(Aparato miAparato) {
+        aparatos.add(miAparato);
+    }
     public int comprobarSuperficie(){
         int superficieTotal = 0;
         for(int i = 0; i < placas.size(); i++){
@@ -58,5 +61,16 @@ public class Casa {
         int superficieRestante =  this.superficie - superficieTotal;
         return superficieRestante;
     }
+    public int listPlaca(){
+        return placas.size();
+    }
+    
+    public Aparato dameAparato(String descripcion) {
+    for (int i = 0; i < aparatos.size(); i++) {
+    if (aparatos.get(i).getDescripcion().equalsIgnoreCase(descripcion)) {
+        return aparatos.get(i); 
+                }
+         }return null;
+    }
+        
 }
-
