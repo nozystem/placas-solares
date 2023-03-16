@@ -215,7 +215,7 @@ public class main {
                         System.out.println("ERROR: No hi ha cap casa registrada amb aquest nif");
                         break;
                     }
-                    aparato = casa.dameAparato(palabra[2]);
+                    Aparato aparato = casa.dameAparato(palabra[2]);
                     if (aparato == null) {
                         System.out.println("ERROR: No hi ha cap aparell registrat amb aquesta descripció a la casa indicada.");
                         break;
