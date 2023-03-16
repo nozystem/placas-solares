@@ -25,6 +25,7 @@ public class Casa {
         this.superficie = superficie;
         placas = new ArrayList<>();
         aparatos = new ArrayList<>();
+        this.interruptor = true;
     }
 
     public String getNif() {
@@ -39,11 +40,14 @@ public class Casa {
         return this.superficie;
     }
 
-    public boolean getIntrruptor() {
+    public boolean getInterruptor() {
         return this.interruptor;
     }
+    public ArrayList <Aparato> getAparatos(){
+        return this.aparatos;
+    }
     
-    public void SetInterruptor(boolean newInterruptor) {
+    public void setInterruptor(boolean newInterruptor) {
         this.interruptor = newInterruptor;
     }
     
@@ -67,10 +71,34 @@ public class Casa {
     
     public Aparato dameAparato(String descripcion) {
     for (int i = 0; i < aparatos.size(); i++) {
+    if (aparatos.isEmpty() == false){
     if (aparatos.get(i).getDescripcion().equalsIgnoreCase(descripcion)) {
         return aparatos.get(i); 
                 }
+            }
          }return null;
     }
         
+    public int PotenciaPlacas(){
+        int potenciaTotal= 0;
+        for (int i = 0; i < placas.size(); i++){
+            potenciaTotal += placas.get(i).getPotencia();
+        }
+        return potenciaTotal;
+    }
+    public int PotenciaAparell(){
+        int potenciaTotal= 0;
+        for (int i = 0; i < aparatos.size(); i++){
+            if (aparatos.get(i).getInterruptor() == true){
+                potenciaTotal += aparatos.get(i).getConsumo();
+            }
+        }return potenciaTotal;
+    }
+    
+    public float InversionTotal(){
+        float inversionTotal = 0;
+            for (int i = 0; i < aparatos.size(); i++){
+            inversionTotal +=  placas.get(i).getPrecio();      
+        }return inversionTotal;
+    }
 }

@@ -17,7 +17,7 @@ public class PlacaSolar {
     public PlacaSolar(int superficie, float precio, int potencia) {
         this.superficie = superficie;
         this.precio = precio;
-        this.superficie = potencia;
+        this.potencia = potencia;
     }
 
     public int getSuperficie() {

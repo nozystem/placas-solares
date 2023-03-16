@@ -17,6 +17,7 @@ public class Aparato {
     public Aparato(String descripcion, int consumo) {
         this.descripcion = descripcion;
         this.consumo = consumo;
+        this.interruptor = false;
     }
 
     public String getDescripcion() {
